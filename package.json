@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "api": "^3.3.0",
+    "components": "^0.1.0"
+  }
+}
