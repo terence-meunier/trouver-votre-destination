@@ -12,6 +12,11 @@ import Observable from "./core/classes/observable";
 const app = {
     name: 'app',
     cityField: new Observable(),
+    observers: [
+        Suggestion.methods.searchForSuggestion,
+        myMap.methods.searchCity,
+        Weather.methods.searchCity,
+    ],
     components: [Header, InputField, Suggestion, myMap, Weather],
     mount: function(id) {
         this.components.forEach((component) => {
@@ -20,9 +25,9 @@ const app = {
     },
     created: function() {
         // On enregistre les observers sur l'observable
-        this.cityField.registerObserver(data => Suggestion.methods.searchForSuggestion(data));
-        this.cityField.registerObserver(data => myMap.methods.searchCity(data));
-        this.cityField.registerObserver(data => Weather.methods.searchCity(data));
+        this.observers.forEach((observer) => {
+            this.cityField.registerObserver(data => observer(data));
+        });
 
         // On monte les composants dans le DOM
         this.mount('#app');
