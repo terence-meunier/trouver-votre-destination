@@ -1,3 +1,4 @@
+// Module API pour la carte et la météo
 import searchCity from "../api/openweathermap/openweathermap";
 
 export default {
@@ -17,6 +18,7 @@ export default {
     </div>
   </section>`,
   methods: {
+    // Appel API
     searchCity: function (data) {
       searchCity(data).then((result) => {
         const {

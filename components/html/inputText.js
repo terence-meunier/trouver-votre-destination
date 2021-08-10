@@ -1,6 +1,6 @@
 export default {
-    name: 'inputText',
-    template: `<section class="py-5 flex flex-col justify-center items-center">
+  name: 'inputText',
+  template: `<section class="py-5 flex flex-col justify-center items-center">
     <label for="input-search">Entrer votre destination :</label>
     <input
       id="input-search"

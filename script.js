@@ -19,14 +19,20 @@ const app = {
         });
     },
     created: function() {
+        // On enregistre les observers sur l'observable
         this.cityField.registerObserver(data => Suggestion.methods.searchForSuggestion(data));
         this.cityField.registerObserver(data => myMap.methods.searchCity(data));
         this.cityField.registerObserver(data => Weather.methods.searchCity(data));
+
+        // On monte les composants dans le DOM
         this.mount('#app');
+
+        // On ajoute l'event sur le champ input search
         app.cityField.listener('input-search', 'change');
     }
 }
 
+// Initialisation de l'app
 app.created();
 
 export default app;
